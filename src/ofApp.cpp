@@ -2,6 +2,7 @@
 
 void ofApp::setup(){
     ofToggleFullscreen();
+    //ofSetWindowShape(960, 540);
     ofSetBackgroundAuto(false);
 
     loadFiles("rocks", 3, rockLayers);
@@ -45,8 +46,8 @@ void ofApp::loadFiles(string baseFilename, int count, vector<ofxTexturePlane>& c
 void ofApp::update(){
     updateBackgrounds();
     updateSkylines();
-    if(ofRandom(1) < 0.2){
-        renderNumber = ofRandom(0, 4);
+    if(ofRandom(1) < 0.08){
+        renderNumber = ofRandom(0, 7);
         cout << "Render number: " << renderNumber << endl;
     }
 }
@@ -185,11 +186,11 @@ void ofApp::draw(){
 
     //Draw it
     //masker.draw();
-    if(renderNumber == 0){
+    if(renderNumber >= 0 && renderNumber <= 2){
         masker.drawLayers(0, 5);
-    }else if(renderNumber == 1){
+    }else if(renderNumber >= 3 && renderNumber <= 5){
         masker.drawMask(6);
-    }else if(renderNumber == 2){
+    }else if(renderNumber == 6){
         ofBackground(255, 0, 0, 30);
         masker.drawLayer(6);
     }
