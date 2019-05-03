@@ -63,7 +63,7 @@ void ofApp::updateSkylines(){
         if(ofRandom(1) < 0.6){
             skylinePositionIncrement = ofRandom(0.001, 0.005);
             skylinePositionIncrement = ofRandom(1) < 0.5 ? skylinePositionIncrement : -skylinePositionIncrement;
-            skylineOpacity = ofRandom(80, 90);
+            skylineOpacity = ofRandom(10, 40);
         }
     }
 
@@ -131,10 +131,8 @@ void ofApp::draw(){
     if(skylineNumber >= 0 && skylineNumber <= 5){
         masker.beginLayer(3);
         {
-            ofEnableAlphaBlending();
-            ofSetColor(ofColor(ofColor::white, 70));
+            ofSetColor(ofColor(ofColor::white, skylineOpacity));
             skylineLayers[skylineNumber].draw();
-            ofDisableAlphaBlending();
         }
         masker.endLayer(3);
 
@@ -147,7 +145,9 @@ void ofApp::draw(){
 
         masker.beginLayer(4);
         {
+            ofEnableAlphaBlending();
             masker.drawLayer(3);
+            ofDisableAlphaBlending();
         }
         masker.endLayer(4);
 
@@ -159,13 +159,7 @@ void ofApp::draw(){
     }
 
     //Draw it
-    ofSetBackgroundAuto(false);
-    ofEnableAlphaBlending();
-    if(ofGetFrameNum() % 20 == 0) {
-        ofBackground(ofColor::red);
-    }
-    masker.drawLayer(3);
-    ofDisableAlphaBlending();
+    masker.draw();
     masker.drawOverlay();
 }
 
