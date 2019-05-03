@@ -15,11 +15,12 @@ void ofApp::setup(){
     rockLayers[2].flipTexture(TEXTURE_FLIP_HORIZONTAL);
 
     initializeSkylines();
-    masker.setup(5);
+    masker.setup(7);
 
     manualSkyline = false;
     colorFlashCount = 0;
     skylineNumber = 0;
+    renderNumber = 0;
 }
 
 void ofApp::initializeSkylines(){
@@ -44,6 +45,10 @@ void ofApp::loadFiles(string baseFilename, int count, vector<ofxTexturePlane>& c
 void ofApp::update(){
     updateBackgrounds();
     updateSkylines();
+    if(ofRandom(1) < 0.2){
+        renderNumber = ofRandom(0, 4);
+        cout << "Render number: " << renderNumber << endl;
+    }
 }
 
 void ofApp::updateBackgrounds(){
@@ -62,8 +67,8 @@ void ofApp::updateSkylines(){
 
         if(ofRandom(1) < 0.6){
             skylinePositionIncrement = ofRandom(0.001, 0.005);
-            skylinePositionIncrement = ofRandom(1) < 0.5 ? skylinePositionIncrement : -skylinePositionIncrement;
-            skylineOpacity = ofRandom(10, 40);
+            //skylinePositionIncrement = ofRandom(1) < 0.5 ? skylinePositionIncrement : -skylinePositionIncrement;
+            skylineOpacity = ofRandom(30, 120);
         }
     }
 
@@ -150,16 +155,45 @@ void ofApp::draw(){
             ofDisableAlphaBlending();
         }
         masker.endLayer(4);
-
-        masker.beginMask(4);
+        
+        masker.beginLayer(5);
         {
-            ofBackground(ofColor::white);
+            ofSetColor(ofColor(ofColor::white, skylineOpacity * 3));
+            skylineLayers[skylineNumber % 2].draw();
         }
-        masker.endMask(4);
+        masker.endLayer(5);
+        
+        masker.beginMask(5);
+        {
+            ofSetColor(ofColor(ofColor::white));
+            skylineLayers[skylineNumber % 2].draw();
+        }
+        masker.endMask(5);
+        
+        masker.beginLayer(6);
+        {
+            masker.drawLayers(0, 2);
+        }
+        masker.endLayer(6);
+        
+        masker.beginMask(6);
+        {
+            masker.drawLayers(3, 5);
+        }
+        masker.endMask(6);
     }
 
     //Draw it
-    masker.draw();
+    //masker.draw();
+    if(renderNumber == 0){
+        masker.drawLayers(0, 5);
+    }else if(renderNumber == 1){
+        masker.drawMask(6);
+    }else if(renderNumber == 2){
+        ofBackground(255, 0, 0, 30);
+        masker.drawLayer(6);
+    }
+    
     masker.drawOverlay();
 }
 

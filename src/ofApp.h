@@ -31,4 +31,5 @@ public:
     int skylineNumber;
     bool manualSkyline;
     float skylinePositionIncrement, skylineOpacity;
+    int renderNumber;
 };
