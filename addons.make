@@ -1,2 +1,6 @@
+ofxAudioUnit
+ofxAudioUnitManager
+ofxBpm
 ofxLayerMask
+ofxMidi
 ofxTexturePlane
