@@ -34,6 +34,7 @@
 		7484EFBB3E2824467556C0E5 /* aumAudioUnitChain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D8FEA5E4A7A8E4A78F6B7C /* aumAudioUnitChain.cpp */; };
 		7EFF2709948EE75A4BA3BF80 /* alphaMask_GL3.vert in Sources */ = {isa = PBXBuildFile; fileRef = 95F5452C58F13212B5099E64 /* alphaMask_GL3.vert */; };
 		8287169C22FCD28000FAE042 /* csGraphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8287169A22FCD28000FAE042 /* csGraphics.cpp */; };
+		8287169F22FCD71400FAE042 /* csAudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8287169D22FCD71400FAE042 /* csAudio.cpp */; };
 		83D9F930112E0944444124EE /* ofxMidiOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 04F77E5C73A62E2E77C78EC6 /* ofxMidiOut.cpp */; };
 		853F053FBB0E1A5C69AE0829 /* ofxLayerMask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9E4628DEE13794A92581E42 /* ofxLayerMask.cpp */; };
 		87B337624802E70C0BDB11F3 /* ofxAudioUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2DC2346096C29D44D4517679 /* ofxAudioUnit.cpp */; };
@@ -131,6 +132,8 @@
 		81AC32CCCB56FAABA3E1BDE0 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = /System/Library/Frameworks/CoreMIDI.framework; sourceTree = "<group>"; };
 		8287169A22FCD28000FAE042 /* csGraphics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = csGraphics.cpp; sourceTree = "<group>"; };
 		8287169B22FCD28000FAE042 /* csGraphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = csGraphics.h; sourceTree = "<group>"; };
+		8287169D22FCD71400FAE042 /* csAudio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = csAudio.cpp; sourceTree = "<group>"; };
+		8287169E22FCD71400FAE042 /* csAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = csAudio.h; sourceTree = "<group>"; };
 		883971DDCC3F7881C2C65B50 /* ofxAudioUnitSpeechSynth.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxAudioUnitSpeechSynth.h; path = ../../../addons/ofxAudioUnit/src/ofxAudioUnitSpeechSynth.h; sourceTree = SOURCE_ROOT; };
 		8B873EEEF22B81D25EA0D45D /* ofxAudioUnitDSPNode.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxAudioUnitDSPNode.h; path = ../../../addons/ofxAudioUnit/src/ofxAudioUnitDSPNode.h; sourceTree = SOURCE_ROOT; };
 		921304ABBEE9BBAD13436898 /* ofxAudioUnitInput.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ofxAudioUnitInput.cpp; path = ../../../addons/ofxAudioUnit/src/ofxAudioUnitInput.cpp; sourceTree = SOURCE_ROOT; };
@@ -537,13 +540,15 @@
 			name = src;
 			sourceTree = "<group>";
 		};
-		8287169922FCD24300FAE042 /* graphics */ = {
+		8287169922FCD24300FAE042 /* media */ = {
 			isa = PBXGroup;
 			children = (
+				8287169D22FCD71400FAE042 /* csAudio.cpp */,
+				8287169E22FCD71400FAE042 /* csAudio.h */,
 				8287169A22FCD28000FAE042 /* csGraphics.cpp */,
 				8287169B22FCD28000FAE042 /* csGraphics.h */,
 			);
-			path = graphics;
+			path = media;
 			sourceTree = "<group>";
 		};
 		8826544968069D38CDE1DA53 /* src */ = {
@@ -958,7 +963,7 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				8287169922FCD24300FAE042 /* graphics */,
+				8287169922FCD24300FAE042 /* media */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
@@ -1131,6 +1136,7 @@
 				BCC8D420CBA9217E437D2D76 /* ofxRtMidiIn.cpp in Sources */,
 				3AEFE4FA8AD5C72671AD07F8 /* ofxRtMidiOut.cpp in Sources */,
 				1A86B7721CAEBC6F1C572C45 /* ofxBaseMidi.cpp in Sources */,
+				8287169F22FCD71400FAE042 /* csAudio.cpp in Sources */,
 				63F9FE1D90234FA6DE6F509E /* ofxMidi.cpp in Sources */,
 				881AF887EC2124F4105DE9E1 /* ofxMidiClock.cpp in Sources */,
 				0BFC9C20FD7E3C8D5873AA97 /* ofxMidiIn.cpp in Sources */,
