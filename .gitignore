@@ -1,3 +1,4 @@
+.trash
 *.app
 bin/data/ProjectionMasks/development/*-*
 bin/data/ProjectionMasks/production/*-*

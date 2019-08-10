@@ -51,7 +51,7 @@ void csGraphics::update(ofEventArgs &e){
     updateSkylines();
     if(ofRandom(1) < 0.08){
         renderNumber = ofRandom(0, 7);
-        cout << "Render number: " << renderNumber << endl;
+        //cout << "Render number: " << renderNumber << endl;
     }
 }
 
