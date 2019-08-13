@@ -8,7 +8,7 @@ void ofApp::setup(){
 void ofApp::update(){
     if(ofGetFrameNum() == 0 || ofRandom(1) < 0.08){
         state = randomInt(0, 7);
-        cout << "State: " << state << endl;
+        //cout << "State: " << state << endl;
     }
 
     graphics.setState(state);
