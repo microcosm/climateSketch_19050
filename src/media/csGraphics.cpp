@@ -1,7 +1,7 @@
 #include "csGraphics.h"
 
 void csGraphics::setup(){
-    ofToggleFullscreen();
+    //ofToggleFullscreen();
     //ofSetWindowShape(960, 540);
     ofSetBackgroundAuto(false);
 

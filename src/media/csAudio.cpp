@@ -3,15 +3,17 @@
 void csAudio::setup(){
     manager.setup();
     manager.toggleDebugUI();
-    synth.setup("togu1", 'aumu', 'Nif8', '-NI-');
-    filter.setup("filter1", kAudioUnitType_Effect, kAudioUnitSubType_LowPassFilter);
-    reverb.setup("reverb1", kAudioUnitType_Effect, kAudioUnitSubType_MatrixReverb);
+    fm8.setup("Fm8");
+    filter.setup("filter1");
+    reverb.setup("reverb1");
+    fm8.printParamChanges();
 
     manager.createChain(&chain)
-        .link(&synth)
+        .link(&fm8)
         .to(&filter)
         .to(&reverb)
         .toMixer();
+
     chain.sendNoteOn("E3");
 
     ofAddListener(ofEvents().update, this, &csAudio::update);

@@ -1,6 +1,9 @@
 #pragma once
 
 #include "ofxAudioUnitManager.h"
+#include "aumUnit_Fm8.h"
+#include "aumUnit_AUMatrixReverb.h"
+#include "aumUnit_AULowPassFilter.h"
 
 class csAudio{
 
@@ -11,5 +14,7 @@ public:
 
     ofxAudioUnitManager manager;
     aumAudioUnitChain chain;
-    aumManagedAudioUnit synth, filter, reverb;
+    aumUnit_Fm8 fm8;
+    aumUnit_AUMatrixReverb reverb;
+    aumUnit_AULowPassFilter filter;
 };
