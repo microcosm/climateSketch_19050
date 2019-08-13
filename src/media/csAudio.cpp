@@ -6,8 +6,8 @@ void csAudio::setup(){
     fm8.setup("Fm8");
     filter.setup("filter1");
     reverb.setup("reverb1");
-    fm8.printParamChanges();
     state = 0;
+    sequenceIndex = -1;
 
     manager.createChain(&chain)
         .link(&fm8)
@@ -31,8 +31,9 @@ void csAudio::setState(int _state){
 }
 
 void csAudio::update(ofEventArgs &e){
-    float progress = sin(mapSequenceProgress(TWO_PI));
-    
+    float progress = cos(mapHyperSequenceProgress(TWO_PI));
+    cout << progress << endl;
+    fm8.set(fm8.op_x_frequency_ratiobr, ofMap(progress, -1, 1, 0.035, 0.05));
 }
 
 void csAudio::draw(ofEventArgs &e){
@@ -40,7 +41,14 @@ void csAudio::draw(ofEventArgs &e){
 }
 
 void csAudio::beatEvent(void){
-    cout << "============>BEAT" << endl;
+    if(manager.bpm.barIndex == 0) {
+        sequenceIndex++;
+        if(sequenceIndex >= sequencesPerHyperSequence){
+            sequenceIndex = 0;
+        }
+    }
+
+    cout << "============> SEQUENCE: " << sequenceIndex + 1 << " BAR: " << manager.bpm.barIndex + 1 << endl;
 }
 
 void csAudio::respondToStateChange(){
@@ -61,4 +69,14 @@ float csAudio::mapSequenceProgress(float max){
 
 float csAudio::mapSequenceProgress(float min, float max){
     return ofMap(manager.bpm.countOfTick % ticksPerSequence, 0, ticksPerSequence, min, max);
+}
+
+float csAudio::mapHyperSequenceProgress(float max){
+    return mapHyperSequenceProgress(0, max);
+}
+
+float csAudio::mapHyperSequenceProgress(float min, float max){
+    int ticksFromPreviousSequences = sequenceIndex * ticksPerSequence;
+    int ticks = ticksFromPreviousSequences + manager.bpm.countOfTick;
+    return ofMap(ticks % ticksPerHyperSequence, 0, ticksPerHyperSequence, min, max);
 }

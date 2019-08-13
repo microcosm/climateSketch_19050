@@ -14,6 +14,10 @@
 //The tick count value across the sequence is exposed as ofxBpm.countOfTick
 const int ticksPerSequence = 960;
 const int ticksPerBar = 240;
+const int ticksPerHyperSequence = 3840;
+
+const int barsPerSequence = 4;
+const int sequencesPerHyperSequence = 4;
 
 class csAudio{
 
@@ -30,8 +34,11 @@ protected:
     float mapBarProgress(float min, float max);
     float mapSequenceProgress(float max);
     float mapSequenceProgress(float min, float max);
+    float mapHyperSequenceProgress(float max);
+    float mapHyperSequenceProgress(float min, float max);
 
     int state;
+    int sequenceIndex;
     ofxAudioUnitManager manager;
     aumAudioUnitChain chain;
     aumUnit_Fm8 fm8;
