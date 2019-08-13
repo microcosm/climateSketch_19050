@@ -12,6 +12,7 @@ class csGraphics{
 
 public:
     void setup();
+    void setState(int _state);
     void initializeSkylines();
     void loadFiles(string baseFilename, int count, vector<ofxTexturePlane>& collection, csLoadingMode mode=LOAD_INCREMENTAL);
     void update(ofEventArgs &e);
@@ -30,5 +31,5 @@ public:
     int skylineNumber;
     bool manualSkyline;
     float skylinePositionIncrement, skylineOpacity;
-    int renderNumber;
+    int state;
 };

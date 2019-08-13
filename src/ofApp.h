@@ -10,7 +10,9 @@ public:
     void setup();
     void update();
     void draw();
+    int randomInt(int min, int max);
 
+    int state;
     csGraphics graphics;
     csAudio audio;
 };

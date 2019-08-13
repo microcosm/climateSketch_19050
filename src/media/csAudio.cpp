@@ -7,6 +7,7 @@ void csAudio::setup(){
     filter.setup("filter1");
     reverb.setup("reverb1");
     fm8.printParamChanges();
+    state = 0;
 
     manager.createChain(&chain)
         .link(&fm8)
@@ -18,6 +19,10 @@ void csAudio::setup(){
 
     ofAddListener(ofEvents().update, this, &csAudio::update);
     ofAddListener(ofEvents().draw, this, &csAudio::draw);
+}
+
+void csAudio::setState(int _state){
+    state = _state;
 }
 
 void csAudio::update(ofEventArgs &e){

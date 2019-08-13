@@ -21,10 +21,14 @@ void csGraphics::setup(){
     manualSkyline = false;
     colorFlashCount = 0;
     skylineNumber = 0;
-    renderNumber = 0;
+    state = 0;
 
     ofAddListener(ofEvents().update, this, &csGraphics::update);
     ofAddListener(ofEvents().draw, this, &csGraphics::draw);
+}
+
+void csGraphics::setState(int _state){
+    state = _state;
 }
 
 void csGraphics::initializeSkylines(){
@@ -49,10 +53,6 @@ void csGraphics::loadFiles(string baseFilename, int count, vector<ofxTexturePlan
 void csGraphics::update(ofEventArgs &e){
     updateBackgrounds();
     updateSkylines();
-    if(ofRandom(1) < 0.08){
-        renderNumber = ofRandom(0, 7);
-        //cout << "Render number: " << renderNumber << endl;
-    }
 }
 
 void csGraphics::updateBackgrounds(){
@@ -189,11 +189,11 @@ void csGraphics::draw(ofEventArgs &e){
 
     //Draw it
     //masker.draw();
-    if(renderNumber >= 0 && renderNumber <= 2){
+    if(state >= 0 && state <= 2){
         masker.drawLayers(0, 5);
-    }else if(renderNumber >= 3 && renderNumber <= 5){
+    }else if(state >= 3 && state <= 5){
         masker.drawMask(6);
-    }else if(renderNumber == 6){
+    }else if(state == 6){
         ofBackground(255, 0, 0, 30);
         masker.drawLayer(6);
     }

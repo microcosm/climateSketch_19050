@@ -9,9 +9,11 @@ class csAudio{
 
 public:
     void setup();
+    void setState(int _state);
     void update(ofEventArgs &e);
     void draw(ofEventArgs &e);
 
+    int state;
     ofxAudioUnitManager manager;
     aumAudioUnitChain chain;
     aumUnit_Fm8 fm8;
