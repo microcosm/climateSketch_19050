@@ -2,6 +2,8 @@
 
 #include "ofxAudioUnitManager.h"
 #include "aumUnit_Fm8.h"
+#include "aumUnit_Massive.h"
+#include "aumUnit_Kontakt6.h"
 #include "aumUnit_AUMatrixReverb.h"
 #include "aumUnit_AULowPassFilter.h"
 
@@ -40,8 +42,8 @@ protected:
     int state;
     int sequenceIndex;
     ofxAudioUnitManager manager;
-    aumAudioUnitChain chain;
+    aumAudioUnitChain chain1, chain2, chain3, chain4;
     aumUnit_Fm8 fm8;
-    aumUnit_AUMatrixReverb reverb;
-    aumUnit_AULowPassFilter filter;
+    aumUnit_Massive massive;
+    aumUnit_Kontakt6 kontakt1, kontakt2;
 };
